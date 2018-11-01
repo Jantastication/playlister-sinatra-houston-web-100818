@@ -4,6 +4,13 @@ class Artist < ActiveRecord::Base
     has_many :artist_genres
     has_many :genres, through: :artist_genres
 
+    def genres
+        genres = []
+        self.songs.each do |song|
+            genres << song.genres
+        end
+        genres.flatten.uniq
+    end
     # def slug
     #     self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
     # end
