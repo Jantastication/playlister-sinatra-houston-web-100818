@@ -8,6 +8,12 @@ class GenresController < ApplicationController
         erb :"genres/new"
     end
 
+    post '/genres' do
+        Genre.create(params)
+        redirect "/genres"
+    end
+    
+
     get '/genres/:slug' do
         @genre = Genre.find_by_slug(params[:slug])
         erb :"genres/show"
