@@ -1,7 +1,8 @@
 class Genre < ActiveRecord::Base
-    has_many :songs
     has_many :song_genres
-    has_many :artists, through: :song_genres
+    has_many :songs, through: :song_genres
+    has_many :artist_genres
+    has_many :artists, through: :artist_genres
 
     # def slug
     #     self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
