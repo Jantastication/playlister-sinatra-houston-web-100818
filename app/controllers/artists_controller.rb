@@ -9,6 +9,11 @@ class ArtistsController < ApplicationController
         erb :"artists/new"
     end
 
+    post '/artists' do
+        artist = Artist.create(params)
+        redirect "/artists/#{artist.slug}"
+    end 
+
     get '/artists/:slug' do 
         @artist = Artist.find_by_slug(params[:slug])
         erb :"artists/show"
