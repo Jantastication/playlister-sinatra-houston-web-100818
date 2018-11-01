@@ -1,0 +1,12 @@
+<h1>Create Songs</h1>
+
+<form action="/songs" method = "POST">
+
+<label>Name</label>
+<input type="text" name = "song[name]">
+<label>Artist</label>
+<select name = song[artist_id]>
+<%@artists.each do |a|%>
+<option value="<%=artist.id%>"><%=artist.name%></option>
+<%end%>
+<input type="submit">
