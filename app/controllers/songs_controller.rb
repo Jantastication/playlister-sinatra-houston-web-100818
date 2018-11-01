@@ -11,8 +11,11 @@ class SongsController < ApplicationController
     end
 
     post '/songs' do
-        binding.pry
-        Song.create(params[:song])
+        song = Song.create(params[:song])
+        params[:genre_ids].each do |genre|
+            SongGenre.create(song_id: song.id, genre_id: genre.to_i) 
+        end
+        redirect "/songs/#{song.slug}"
     end
 
     get '/songs/:slug' do
