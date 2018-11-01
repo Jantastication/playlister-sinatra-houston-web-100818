@@ -8,6 +8,14 @@ class Genre < ActiveRecord::Base
     #     self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
     # end
 
+    def artists
+        artists = []
+        self.songs.each do |song|
+            artists << song.artist
+        end
+        artists.uniq
+    end
+
     def self.find_by_slug(slug_param)
         self.all.find do |i|
             i.slug == slug_param
